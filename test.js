@@ -1,7 +1,9 @@
 const http = require("http");
+const lodash = require("lodash");
 
 const server = http.createServer((req, res) => {
-  console.log("Hello World");
+  const random = lodash.random(0, 3);
+  console.log(random);
 });
 
 server.listen(8000, () => {

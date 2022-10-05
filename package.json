@@ -1,0 +1,23 @@
+{
+  "name": "full-stack-blog",
+  "version": "1.0.0",
+  "description": "A simple blog with a backend, built to practice node.js, express and mongoDB! Course courtesy of Shaun Pelling",
+  "main": "test.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/ash-automates/Full-Stack-Blog.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/ash-automates/Full-Stack-Blog/issues"
+  },
+  "homepage": "https://github.com/ash-automates/Full-Stack-Blog#readme",
+  "dependencies": {
+    "lodash": "^4.17.21"
+  }
+}
