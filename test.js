@@ -2,8 +2,9 @@ const http = require("http");
 const lodash = require("lodash");
 
 const server = http.createServer((req, res) => {
-  const random = lodash.random(0, 3);
-  console.log(random);
+  res.setHeader("Content-Type", "text/plain");
+  res.write("Hello World");
+  res.end();
 });
 
 server.listen(8000, () => {
