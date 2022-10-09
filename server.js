@@ -12,20 +12,27 @@ const server = http.createServer((req, res) => {
       path += "/about.html";
       res.statusCode = 200;
       break;
+    case "/about-me":
+      res.statusCode = 301;
+      res.setHeader("Location", "/about");
+      break;
     default:
       path += "/404.html";
       res.statusCode = 404;
       break;
   }
   res.setHeader("Content-Type", "text/html");
-  fs.readFile(path, (error, data) => {
-    if (error) {
-      console.log(error);
-      res.end();
-    } else {
-      res.end(data);
-    }
-  });
+  if (res.statusCode === 301) {
+    res.end();
+  } else {
+    fs.readFile(path, (error, data) => {
+      if (error) {
+        console.log(error);
+      } else {
+        res.end(data);
+      }
+    });
+  }
 });
 
 server.listen(8000, () => {
