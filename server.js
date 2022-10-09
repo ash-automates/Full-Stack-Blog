@@ -21,7 +21,7 @@ const server = http.createServer((req, res) => {
       res.statusCode = 404;
       break;
   }
-  res.setHeader("Content-Type", "text/html");
+
   if (res.statusCode === 301) {
     res.end();
   } else {
@@ -29,6 +29,7 @@ const server = http.createServer((req, res) => {
       if (error) {
         console.log(error);
       } else {
+        res.setHeader("Content-Type", "text/html");
         res.end(data);
       }
     });
