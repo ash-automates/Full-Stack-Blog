@@ -21,7 +21,6 @@ const server = http.createServer((req, res) => {
       res.statusCode = 404;
       break;
   }
-
   if (res.statusCode === 301) {
     res.end();
   } else {
