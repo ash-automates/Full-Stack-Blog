@@ -1,13 +1,15 @@
 const express = require("express");
 const morgan = require("morgan");
+require("dotenv").config();
 
+// settings
 const app = express();
 app.set("view engine", "ejs");
 app.listen(8000);
 app.use(express.static("public"));
-
 app.use(morgan("dev"));
 
+const mongoDB = `mongodb+srv://${process.env.ATLAS_USER}:${process.env.ATLAS_PASS}@cluster0.4p3upij.mongodb.net/?retryWrites=true&w=majority`;
 app.get("/", (req, res) => {
   const data = [
     {
