@@ -4,6 +4,7 @@ const morgan = require("morgan");
 const app = express();
 app.set("view engine", "ejs");
 app.listen(8000);
+app.use(express.static("public"));
 
 app.use(morgan("dev"));
 
