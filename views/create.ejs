@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html lang="en">
+  <%- include('./components/head.ejs') %>
+  <body>
+    <%- include('./components/nav.ejs') %>
+    <form>
+      <label for="title">Blog title:</label>
+      <input type="text" id="title" name="title" required />
+      <label for="snippet">Blog snippet:</label>
+      <input type="text" id="snippet" name="snippet" required />
+      <label for="body">Blog body:</label>
+      <textarea id="body" name="body" required></textarea>
+      <button>Submit</button>
+    </form>
+    <%- include('./components/footer.ejs') %>
+  </body>
+</html>
