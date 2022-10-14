@@ -2,6 +2,7 @@
 <html lang="en">
   <head>
     <%- include('./components/head.ejs') %>
+    <script src="/js/delete.js" defer></script>
   </head>
   <body>
     <%- include('./components/nav.ejs') %>
@@ -10,6 +11,7 @@
       <div class="content">
         <p><%= blog.body %></p>
       </div>
+      <a class="delete" data-doc="<%= blog._id %>">delete</a>
     </div>
     <%- include('./components/footer.ejs') %>
   </body>

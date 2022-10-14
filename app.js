@@ -62,6 +62,16 @@ app.get("/blogs/:id", (req, res) => {
     });
 });
 
+app.delete("/blogs/:id", (req, res) => {
+  Blog.findByIdAndDelete(req.params.id)
+    .then((result) => {
+      res.json({ redirects: "/blogs" });
+    })
+    .catch((error) => {
+      console.log(error);
+    });
+});
+
 app.use((req, res) => {
   res.status(404).render("404", { title: "404" });
 });
