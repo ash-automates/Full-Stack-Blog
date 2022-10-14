@@ -52,6 +52,16 @@ app.post("/blogs", (req, res) => {
     });
 });
 
+app.get("/blogs/:id", (req, res) => {
+  Blog.findById(req.params.id)
+    .then((result) => {
+      res.render("details", { title: "Blog Details", blog: result });
+    })
+    .catch((error) => {
+      console.log(error);
+    });
+});
+
 app.use((req, res) => {
   res.status(404).render("404", { title: "404" });
 });

@@ -1,0 +1,16 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <%- include('./components/head.ejs') %>
+  </head>
+  <body>
+    <%- include('./components/nav.ejs') %>
+    <div class="details content">
+      <h3><%= blog.title %></h3>
+      <div class="content">
+        <p><%= blog.body %></p>
+      </div>
+    </div>
+    <%- include('./components/footer.ejs') %>
+  </body>
+</html>
