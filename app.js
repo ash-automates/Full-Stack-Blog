@@ -8,6 +8,7 @@ require("dotenv").config();
 const app = express();
 app.set("view engine", "ejs");
 app.use(express.static("public"));
+app.use(express.urlencoded({ extended: true }));
 app.use(morgan("dev"));
 
 // mongoDB
@@ -16,66 +17,39 @@ mongoose.connect(connection).then((result) => {
   app.listen(8000);
 });
 
-app.get("/create-blog", (req, res) => {
-  const blog = new Blog({
-    title: "My blog 4",
-    snippet: "Test Snippet",
-    body: "Test Body",
-  });
-  blog
-    .save()
-    .then((result) => {
-      res.send(result);
-    })
-    .catch((error) => {
-      console.log(error);
-    });
-});
-
-app.get("/get-blogs", (req, res) => {
-  Blog.find()
-    .then((result) => {
-      res.send(result);
-    })
-    .catch((error) => {
-      console.log(error);
-    });
-});
-
-app.get("/get-blog", (req, res) => {
-  Blog.findById("6347d5dee31b978c1455243b")
-    .then((result) => {
-      res.send(result);
-    })
-    .catch((error) => {
-      console.log(error);
-    });
-});
-
 app.get("/", (req, res) => {
-  const data = [
-    {
-      title: "Yoshi finds eggs",
-      snippet: "Lorem ipsum dolor sit amet consectetur",
-    },
-    {
-      title: "Mario finds stars",
-      snippet: "Lorem ipsum dolor sit amet consectetur",
-    },
-    {
-      title: "How to defeat bowser",
-      snippet: "Lorem ipsum dolor sit amet consectetur",
-    },
-  ];
-  res.render("index", { title: "Home", blogs: data });
+  res.redirect("/blogs");
 });
 
 app.get("/about", (req, res) => {
-  res.render("about", { title: "About" });
+  res.render("about", { title: "About me" });
+});
+
+app.get("/blogs", (req, res) => {
+  Blog.find()
+    .sort({ createdAt: -1 })
+    .then((result) => {
+      res.render("index", { title: "All Blogs", blogs: result });
+    })
+    .catch((error) => {
+      console.log(error);
+    });
 });
 
 app.get("/blogs/create", (req, res) => {
   res.render("create", { title: "Create a new blog" });
+});
+
+app.post("/blogs", (req, res) => {
+  const blog = new Blog(req.body);
+  blog
+    .save()
+    .then((result) => {
+      res.redirect("/blogs");
+    })
+    .catch((error) => {
+      console.log(error);
+    });
 });
 
 app.use((req, res) => {
