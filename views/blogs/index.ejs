@@ -1,8 +1,8 @@
 <!DOCTYPE html>
 <html lang="en">
-  <%- include('./components/head.ejs') %>
+  <%- include('../components/head.ejs') %>
   <body>
-    <%- include('./components/nav.ejs') %>
+    <%- include('../components/nav.ejs') %>
     <div class="blogs content">
       <h2>All Blogs</h2>
       <% if (blogs.length > 0) { %> <% blogs.forEach(blog => { %>
@@ -14,6 +14,6 @@
       <p>There are no blogs to display at the moment....</p>
       <% } %>
     </div>
-    <%- include('./components/footer.ejs') %>
+    <%- include('../components/footer.ejs') %>
   </body>
 </html>
