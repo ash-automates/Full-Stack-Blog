@@ -47,10 +47,24 @@ const blog_delete = (req, res) => {
     });
 };
 
+const blog_edit_get = (req, res) => {
+  Blog.findById(req.params.id).then((result) => {
+    res.render("blogs/edit", { title: "Edit Blog", blog: result });
+  });
+};
+
+const blog_edit_put = (req, res) => {
+  Blog.findByIdAndUpdate(req.params.id, req.body).then((result) => {
+    res.json({ redirects: `/blogs/${req.params.id}` });
+  });
+};
+
 module.exports = {
   blog_index,
   blog_details,
   blog_create_get,
   blog_create_post,
   blog_delete,
+  blog_edit_get,
+  blog_edit_put,
 };

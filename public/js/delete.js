@@ -1,4 +1,6 @@
-const deleteBtn = document.querySelector("body > div > a");
+const deleteBtn = document.querySelector(
+  "body > div > div.button-container > a.delete"
+);
 
 deleteBtn.addEventListener("click", (e) => {
   fetch(`/blogs/${deleteBtn.dataset.doc}`, { method: "DELETE" })

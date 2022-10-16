@@ -8,10 +8,13 @@
     <%- include('../components/nav.ejs') %>
     <div class="details content">
       <h3><%= blog.title %></h3>
-      <div class="content">
+      <div class="content margin-added">
         <p><%= blog.body %></p>
       </div>
-      <a class="delete" data-doc="<%= blog._id %>">delete</a>
+      <div class="button-container">
+        <a class="delete" data-doc="<%= blog._id %>">delete</a>
+        <a class="edit" href="/blogs/edit/<%= blog._id %>">edit</a>
+      </div>
     </div>
     <%- include('../components/footer.ejs') %>
   </body>
