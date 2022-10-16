@@ -15,7 +15,7 @@ app.use(morgan("dev"));
 // mongoDB
 const connection = `mongodb+srv://${process.env.ATLAS_USER}:${process.env.ATLAS_PASS}@cluster0.4p3upij.mongodb.net/${process.env.ATLAS_DB}?retryWrites=true&w=majority`;
 mongoose.connect(connection).then((result) => {
-  app.listen(8000);
+  app.listen(process.env.PORT || 8000);
 });
 
 app.get("/", (req, res) => {
